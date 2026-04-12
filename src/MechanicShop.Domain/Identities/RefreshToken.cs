@@ -20,7 +20,7 @@ public sealed class RefreshToken : AuditableEntity
         ExpiresOn = expiresOn;
     }
 
-    public static Result<bool> Validate(string token, string userId, DateTimeOffset expiresOn)
+    private static Result<bool> Validate(string token, string userId, DateTimeOffset expiresOn)
     {
         if (string.IsNullOrWhiteSpace(token))
         {

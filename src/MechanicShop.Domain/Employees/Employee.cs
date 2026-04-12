@@ -22,7 +22,7 @@ public class Employee : AuditableEntity
         Role = role;
     }
 
-    public static Result<bool> Validate(string firstName, string lastName)
+    private static Result<bool> Validate(string firstName, string lastName)
     {
         if (string.IsNullOrWhiteSpace(firstName))
         {
