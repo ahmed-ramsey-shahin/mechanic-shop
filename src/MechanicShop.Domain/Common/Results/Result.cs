@@ -20,8 +20,8 @@ public sealed class Result<TValue> : IResult<TValue>
     private readonly TValue? _value;
     private readonly List<Error>? _errors;
     public bool IsSuccess { get; }
-    public bool IsErrror => !IsSuccess;
-    public List<Error> Errors => IsErrror ? _errors! : [];
+    public bool IsError => !IsSuccess;
+    public List<Error> Errors => IsError ? _errors! : [];
     public TValue Value => IsSuccess ? _value! : default!;
     public Error TopError => (_errors?.Count > 0) ? _errors[0] : default;
 
