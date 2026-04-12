@@ -1,6 +1,6 @@
 namespace MechanicShop.Domain.Common;
 
-internal class Entity
+internal abstract class Entity
 {
     public Guid Id { get; protected init; }
     private readonly List<IDomainEvent> _domainEvents = [];
