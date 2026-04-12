@@ -1,6 +1,6 @@
 namespace MechanicShop.Domain.Common;
 
-internal abstract class AuditableEntity : Entity
+public abstract class AuditableEntity : Entity
 {
     public DateTimeOffset CreatedAt { get; set; }
     public string? CreatedBy { get; set; }
