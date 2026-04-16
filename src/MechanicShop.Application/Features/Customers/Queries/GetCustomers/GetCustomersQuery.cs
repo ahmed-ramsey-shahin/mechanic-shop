@@ -7,7 +7,7 @@ namespace MechanicShop.Application.Features.Customers.Queries.GetCustomers;
 
 public sealed record GetCustomersQuery(int Page, int PageSize) : ICachedQuery<Result<PaginatedList<CustomerDto>>>
 {
-    public string CacheKey => "customers";
+    public string CacheKey => $"customers:{Page}:{PageSize}";
 
     public string[] Tags => ["customer"];
 

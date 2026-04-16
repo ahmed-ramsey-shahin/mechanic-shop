@@ -4,14 +4,14 @@ using MediatR;
 using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.Extensions.Logging;
 
-namespace MechanicShop.Application.Common.Behaviours;
+namespace MechanicShop.Application.Common.Behaviors;
 
-public class CachingBehaviour<TRequest, TResponse>(
-    HybridCache cache, ILogger<CachingBehaviour<TRequest, TResponse>> logger
+public class CachingBehavior<TRequest, TResponse>(
+    HybridCache cache, ILogger<CachingBehavior<TRequest, TResponse>> logger
 ) : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {
     private readonly HybridCache _cache = cache;
-    private readonly ILogger<CachingBehaviour<TRequest, TResponse>> _logger = logger;
+    private readonly ILogger<CachingBehavior<TRequest, TResponse>> _logger = logger;
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
