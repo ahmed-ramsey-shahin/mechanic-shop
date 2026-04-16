@@ -1,10 +1,11 @@
 using MechanicShop.Application.Common.Interfaces;
 using MechanicShop.Application.Common.Models;
 using MechanicShop.Application.Features.Customers.Dtos;
+using MechanicShop.Domain.Common.Results;
 
 namespace MechanicShop.Application.Features.Customers.Queries.GetCustomers;
 
-public sealed record GetCustomersQuery(int Page, int PageSize) : ICachedQuery<PaginatedList<CustomerDto>>
+public sealed record GetCustomersQuery(int Page, int PageSize) : ICachedQuery<Result<PaginatedList<CustomerDto>>>
 {
     public string CacheKey => "customers";
 
