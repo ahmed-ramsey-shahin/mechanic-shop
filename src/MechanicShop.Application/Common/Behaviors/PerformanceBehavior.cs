@@ -30,7 +30,7 @@ public class PerformanceBehavior<TRequest, TResponse>(
 
             if (userId != Guid.Empty)
             {
-                username = await _identityService.GetUserNameAsync(userId, cancellationToken);
+                username = await _identityService.GetUsernameAsync(userId, cancellationToken);
             }
             _logger.LogWarning("Long running request: {Name} ({ElapsedMilliseconds} milliseconds) {UserId} {Username} {@Request}", requestName, elapsedMilliseconds, userId, username, request);
         }

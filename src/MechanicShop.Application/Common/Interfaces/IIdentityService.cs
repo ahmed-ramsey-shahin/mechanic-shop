@@ -9,5 +9,5 @@ public interface IIdentityService
     Task<bool> AuthorizeAsync(Guid userId, string? policyName, CancellationToken cancellationToken);
     Task<Result<AppUserDto>> AuthenticateAsync(string email, string password, CancellationToken cancellationToken);
     Task<Result<AppUserDto>> GetUserByIdAsync(Guid userId, CancellationToken cancellationToken);
-    Task<string?> GetUserNameAsync(Guid userId, CancellationToken cancellationToken);
+    Task<string?> GetUsernameAsync(Guid userId, CancellationToken cancellationToken);
 }
