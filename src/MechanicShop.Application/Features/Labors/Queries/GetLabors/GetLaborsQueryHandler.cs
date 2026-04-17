@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MechanicShop.Application.Features.Labors.Queries.GetLabors
 {
-    public class GetLaborsQueryHandler(IAppDbContext context) : IRequestHandler<GetLaborsQuery, Result<PaginatedList<LaborDto>>>
+    public sealed class GetLaborsQueryHandler(IAppDbContext context) : IRequestHandler<GetLaborsQuery, Result<PaginatedList<LaborDto>>>
     {
         private readonly IAppDbContext _context = context;
         public async Task<Result<PaginatedList<LaborDto>>> Handle(GetLaborsQuery request, CancellationToken cancellationToken)

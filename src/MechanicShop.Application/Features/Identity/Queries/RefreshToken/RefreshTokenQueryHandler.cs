@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MechanicShop.Application.Features.Identity.Queries.RefreshToken;
 
-public class RefreshTokenQueryHandler(
+public sealed class RefreshTokenQueryHandler(
     ILogger<RefreshTokenQueryHandler> logger,
     IIdentityService identityService,
     IAppDbContext context,

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MechanicShop.Application.Features.Identity.Queries.GetUserInfo;
 
-public class GetUserByIdQueryHandler(
+public sealed class GetUserByIdQueryHandler(
     ILogger<GetUserByIdQueryHandler> logger,
     IIdentityService identityService
 ) : IRequestHandler<GetUserByIdQuery, Result<AppUserDto>>

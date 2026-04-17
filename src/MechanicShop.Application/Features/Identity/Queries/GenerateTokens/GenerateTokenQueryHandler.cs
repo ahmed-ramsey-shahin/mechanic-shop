@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MechanicShop.Application.Features.Identity.Queries.GenerateTokens;
 
-public class GenerateTokenQueryHandler(
+public sealed class GenerateTokenQueryHandler(
     ILogger<GenerateTokenQueryHandler> logger,
     IIdentityService identityService,
     ITokenProvider tokenProvider
