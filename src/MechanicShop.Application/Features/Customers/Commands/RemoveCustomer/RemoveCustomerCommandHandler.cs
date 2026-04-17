@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MechanicShop.Application.Features.Customers.Commands.RemoveCustomer
 {
-    public class RemoveCustomerCommandHandler(
+    public sealed class RemoveCustomerCommandHandler(
         ILogger<RemoveCustomerCommandHandler> logger,
         IAppDbContext context,
         HybridCache cache

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MechanicShop.Application.Features.Customers.Commands.UpdateCustomer
 {
-    public class UpdateCustomerCommandHandler(
+    public sealed class UpdateCustomerCommandHandler(
         ILogger<UpdateCustomerCommandHandler> logger,
         IAppDbContext context,
         HybridCache cache
