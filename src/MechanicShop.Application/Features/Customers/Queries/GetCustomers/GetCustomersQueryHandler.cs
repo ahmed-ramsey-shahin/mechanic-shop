@@ -6,12 +6,14 @@ using MechanicShop.Application.Features.Customers.Mappers;
 using MechanicShop.Domain.Common.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace MechanicShop.Application.Features.Customers.Queries.GetCustomers;
 
-public sealed class GetCustomersQueryHandler(IAppDbContext context) : IRequestHandler<GetCustomersQuery, Result<PaginatedList<CustomerDto>>>
+public sealed class GetCustomersQueryHandler(IAppDbContext context, ILogger<GetCustomersQueryHandler> logger) : IRequestHandler<GetCustomersQuery, Result<PaginatedList<CustomerDto>>>
 {
     private readonly IAppDbContext _db = context;
+    private readonly ILogger<GetCustomersQueryHandler> _logger = logger;
 
     public async Task<Result<PaginatedList<CustomerDto>>> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
     {
@@ -19,6 +21,7 @@ public sealed class GetCustomersQueryHandler(IAppDbContext context) : IRequestHa
         var totalPages = (int) Math.Ceiling(totalCount / (double) request.PageSize);
         if (request.Page > totalPages)
         {
+            _logger.LogError("Could not return customers because the required page is invalid: Maximum number of pages {MaxNoPages}, Required Page {PageNumber}", totalPages, request.Page);
             return ApplicationErrors.InvalidPage;
         }
         var customers = await _db.Customers.Include(customer => customer.Vehicles)
