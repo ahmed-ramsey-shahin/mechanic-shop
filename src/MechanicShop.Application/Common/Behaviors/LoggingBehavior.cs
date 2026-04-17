@@ -14,11 +14,11 @@ public class LoggingBehavior<TRequest>(ILogger<TRequest> logger, IUser user, IId
     {
         var requestName = typeof(TRequest).Name;
         var userId = _user.Id;
-        string? userName = string.Empty;
+        string? username = string.Empty;
         if (userId != Guid.Empty)
         {
-            userName = await _identityService.GetUsernameAsync(userId, cancellationToken);
+            username = await _identityService.GetUsernameAsync(userId, cancellationToken);
         }
-        _logger.LogInformation("Request: {Name} {UserId} {Username} {@Request}", requestName, userId, userName, request);
+        _logger.LogInformation("Request: {Name} {UserId} {Username} {@Request}", requestName, userId, username, request);
     }
 }
