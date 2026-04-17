@@ -1,9 +1,8 @@
-using MechanicShop.Domain.Common;
 using MechanicShop.Domain.Common.Results;
 
 namespace MechanicShop.Domain.WorkOrders.Billing;
 
-public sealed class InvoiceLineItem : AuditableEntity
+public sealed class InvoiceLineItem
 {
     public Guid InvoiceId { get; private set; }
     public int LineNumber { get; private set; }
@@ -16,7 +15,7 @@ public sealed class InvoiceLineItem : AuditableEntity
     {
     }
 
-    private InvoiceLineItem(Guid id, Guid invoiceId, int lineNumber, string description, int quantity, decimal unitPrice) : base(id)
+    private InvoiceLineItem(Guid invoiceId, int lineNumber, string description, int quantity, decimal unitPrice)
     {
         InvoiceId = invoiceId;
         LineNumber = lineNumber;
@@ -55,13 +54,13 @@ public sealed class InvoiceLineItem : AuditableEntity
         return true;
     }
 
-    public static Result<InvoiceLineItem> Create(Guid id, Guid invoiceId, int lineNumber, string description, int quantity, decimal unitPrice)
+    public static Result<InvoiceLineItem> Create(Guid invoiceId, int lineNumber, string description, int quantity, decimal unitPrice)
     {
         var validationResult = Validate(invoiceId, lineNumber, description, quantity, unitPrice);
         if (validationResult.IsError)
         {
             return validationResult.Errors;
         }
-        return new InvoiceLineItem(id, invoiceId, lineNumber, description, quantity, unitPrice);
+        return new InvoiceLineItem(invoiceId, lineNumber, description, quantity, unitPrice);
     }
 }

@@ -25,7 +25,7 @@ public sealed class WorkOrder : AuditableEntity
     public decimal TotalLaborCost => _repairTasks.Sum(rt => rt.LaborCost);
     public bool IsEditable => State is not (WorkOrderState.Completed or WorkOrderState.Cancelled);
     private readonly List<RepairTask> _repairTasks = [];
-    private IEnumerable<RepairTask> RepairTasks => _repairTasks.AsReadOnly();
+    public IEnumerable<RepairTask> RepairTasks => _repairTasks.AsReadOnly();
 
     private WorkOrder()
     {
