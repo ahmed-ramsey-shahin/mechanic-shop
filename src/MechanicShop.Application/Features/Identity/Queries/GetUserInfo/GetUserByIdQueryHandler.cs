@@ -19,7 +19,7 @@ public class GetUserByIdQueryHandler(
         var getUserByIdResult = await _identityService.GetUserByIdAsync(request.UserId, cancellationToken);
         if (getUserByIdResult.IsError)
         {
-            _logger.LogInformation("User with Id {UserId}{ErrorDetails}", request.UserId, getUserByIdResult.TopError.Description);
+            _logger.LogError("User with Id {UserId}{ErrorDetails}", request.UserId, getUserByIdResult.TopError.Description);
             return getUserByIdResult.Errors;
         }
         return getUserByIdResult.Value;
