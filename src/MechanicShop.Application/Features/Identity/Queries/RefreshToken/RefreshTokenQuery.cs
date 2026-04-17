@@ -3,4 +3,4 @@ using MediatR;
 
 namespace MechanicShop.Application.Features.Identity.Queries.RefreshToken;
 
-public record RefreshTokenQuery(string RefreshToken, string ExpiredToken) : IRequest<Result<TokenResponse>>;
+public sealed record RefreshTokenQuery(string RefreshToken, string ExpiredToken) : IRequest<Result<TokenResponse>>;
