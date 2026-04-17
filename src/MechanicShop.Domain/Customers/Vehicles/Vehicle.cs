@@ -42,7 +42,7 @@ public sealed class Vehicle : AuditableEntity
             return VehicleErrors.LicensePlateRequired;
         }
 
-        if (year < 1886 || year > DateTime.UtcNow.Year)
+        if (year < 1886 || year > DateTimeOffset.UtcNow.Year)
         {
             return VehicleErrors.YearInvalid;
         }
