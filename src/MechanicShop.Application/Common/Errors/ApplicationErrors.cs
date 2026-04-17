@@ -74,4 +74,7 @@ public static class ApplicationErrors
 
     public static Error LaborNotFound =>
         Error.NotFound("Employee.LaborNotFound", "Labor does not exist.");
+
+    public static Error InvalidPage =>
+        Error.NotFound("Invalid.Page", "The required page is invalid");
 }

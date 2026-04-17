@@ -1,3 +1,4 @@
+using MechanicShop.Application.Common.Errors;
 using MechanicShop.Application.Common.Interfaces;
 using MechanicShop.Application.Common.Models;
 using MechanicShop.Application.Features.Customers.Dtos;
@@ -16,10 +17,14 @@ public sealed class GetCustomersQueryHandler(IAppDbContext context) : IRequestHa
     {
         var totalCount = await _db.Customers.CountAsync(cancellationToken);
         var totalPages = (int) Math.Ceiling(totalCount / (double) request.PageSize);
+        if (request.Page > totalPages)
+        {
+            return ApplicationErrors.InvalidPage;
+        }
         var customers = await _db.Customers.Include(customer => customer.Vehicles)
             .AsNoTracking()
             .Select(customer => customer.ToDto())
-            .Skip((1 - request.Page) * request.PageSize)
+            .Skip((request.Page - 1) * request.PageSize)
             .Take(request.PageSize)
             .ToListAsync(cancellationToken);
         return new PaginatedList<CustomerDto>()
