@@ -68,7 +68,7 @@ public sealed class RepairTask : AuditableEntity
         return Result.Updated;
     }
 
-    public Result<Updated> SynchronizeVehicles(List<Part> incomingParts)
+    public Result<Updated> SynchronizeParts(List<Part> incomingParts)
     {
         _parts.RemoveAll(existing => incomingParts.All(p => p.Id != existing.Id));
 
