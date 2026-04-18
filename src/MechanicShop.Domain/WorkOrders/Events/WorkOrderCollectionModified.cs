@@ -2,4 +2,4 @@ using MechanicShop.Domain.Common;
 
 namespace MechanicShop.Domain.WorkOrders.Events;
 
-public sealed class WorkOrderCollectionModified : IDomainEvent;
+public sealed class WorkOrderCollectionModified : DomainEvent;
