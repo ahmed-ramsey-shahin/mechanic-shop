@@ -6,7 +6,7 @@ namespace MechanicShop.Application.Features.WorkOrders.Queries.GetWorkOrderById
 {
     public sealed record GetWorkOrderByIdQuery(Guid WorkOrderId) : ICachedQuery<Result<WorkOrderDto>>
     {
-        public string CacheKey => $"work_order:{WorkOrderId}";
+        public string CacheKey => $"work_orders:{WorkOrderId}";
 
         public string[] Tags => ["work_order"];
 
